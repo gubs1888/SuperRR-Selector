@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SupeRR Selector Season 2 — Methodology</title>
+<style>
+@page {
+  size: A4;
+  margin: 22mm 20mm 24mm 20mm;
+  @top-left {
+    content: "SUPERR SELECTOR · SEASON 2";
+    font-family: "Montserrat", sans-serif;
+    font-size: 6.8pt;
+    letter-spacing: 0.12em;
+    color: #64748b;
+    border-bottom: 0.5pt solid #e2e8f0;
+    padding-bottom: 3mm;
+    vertical-align: bottom;
+  }
+  @top-right {
+    content: "ROUND 1 · METHODOLOGY";
+    font-family: "Montserrat", sans-serif;
+    font-size: 6.8pt;
+    letter-spacing: 0.12em;
+    color: #64748b;
+    border-bottom: 0.5pt solid #e2e8f0;
+    padding-bottom: 3mm;
+    vertical-align: bottom;
+    text-align: right;
+  }
+  @bottom-left {
+    content: "Pressure-weighted T20 rankings";
+    font-family: "Carlito", sans-serif;
+    font-size: 7.5pt;
+    color: #94a3b8;
+    border-top: 0.5pt solid #e2e8f0;
+    padding-top: 3mm;
+    vertical-align: top;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: "Montserrat", sans-serif;
+    font-size: 7pt;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    border-top: 0.5pt solid #e2e8f0;
+    padding-top: 3mm;
+    vertical-align: top;
+    text-align: right;
+  }
+}
+@page :first {
+  margin: 0;
+  @top-left { content: ""; border: none; }
+  @top-right { content: ""; border: none; }
+  @bottom-left { content: ""; border: none; }
+  @bottom-right { content: ""; border: none; }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  font-family: "Carlito", "Noto Sans", sans-serif;
+  font-size: 10.2pt;
+  line-height: 1.55;
+  color: #1e293b;
+}
+p { margin: 0 0 8pt; orphans: 3; widows: 3; }
+strong { color: #0b1f3a; font-weight: 700; }
+a { color: #0f766e; text-decoration: none; }
+
+h1, h2, h3 {
+  font-family: "Montserrat", "DejaVu Sans", sans-serif;
+  color: #0b1f3a;
+}
+h2 {
+  font-size: 17pt;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 12pt;
+  padding-bottom: 5pt;
+  border-bottom: 1.2pt solid #dbe4ee;
+  page-break-before: always;
+  page-break-after: avoid;
+}
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 5pt;
+  height: 16pt;
+  background: #0f766e;
+  margin-right: 8pt;
+  vertical-align: -1pt;
+}
+h3 {
+  font-size: 12pt;
+  font-weight: 600;
+  color: #0f766e;
+  margin: 18pt 0 6pt;
+  page-break-after: avoid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10pt 0 14pt;
+  font-size: 8.6pt;
+  line-height: 1.35;
+  page-break-inside: auto;
+}
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+th {
+  background: #0b1f3a;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 7.8pt;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 6pt 5pt;
+  text-align: left;
+  vertical-align: bottom;
+}
+td {
+  padding: 5pt 5pt;
+  border-bottom: 0.5pt solid #e2e8f0;
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td { background: #f8fafc; }
+tbody tr:last-child td { border-bottom: 1pt solid #cbd5e1; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+th.rank, td.rank { text-align: center; }
+table.data-table.keep { page-break-inside: avoid; }
+p:has(+ table.keep) { page-break-after: avoid; }
+table.data-table.compact td { padding: 3.2pt 5pt; }
+table.data-table.compact th { padding: 5pt 5pt; }
+
+code {
+  font-family: "DejaVu Sans Mono", "Noto Sans Mono", monospace;
+  font-size: 8.6pt;
+  background: #eef2f7;
+  color: #0b3b5a;
+  padding: 1pt 4pt;
+  border-radius: 3pt;
+}
+pre {
+  background: #f8fafc;
+  border: 0.5pt solid #e2e8f0;
+  border-left: 3pt solid #0f766e;
+  border-radius: 4pt;
+  padding: 9pt 11pt;
+  margin: 10pt 0 14pt;
+  font-size: 8.4pt;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+  page-break-inside: avoid;
+}
+pre code { background: none; padding: 0; color: #1e293b; }
+
+blockquote {
+  margin: 12pt 0 14pt;
+  padding: 10pt 14pt;
+  background: #f0fdfa;
+  border-left: 3.5pt solid #0f766e;
+  border-radius: 4pt;
+  color: #134e4a;
+  page-break-inside: avoid;
+}
+blockquote p { margin: 0; }
+blockquote strong { color: #0f766e; }
+
+ul, ol { margin: 0 0 10pt; padding-left: 18pt; }
+li { margin-bottom: 3pt; }
+
+figure {
+  margin: 12pt 0 16pt;
+  page-break-inside: avoid;
+  text-align: center;
+}
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 0.5pt solid #e2e8f0;
+  border-radius: 4pt;
+  padding: 4pt;
+  background: #ffffff;
+}
+figcaption {
+  margin-top: 5pt;
+  font-size: 8.4pt;
+  color: #64748b;
+  font-style: italic;
+}
+
+hr { display: none; }
+
+/* ---------- Cover ---------- */
+.cover {
+  width: 210mm;
+  height: 297mm;
+  padding: 18mm 20mm 16mm;
+  background:
+    radial-gradient(circle at 86% 8%, rgba(20, 184, 166, 0.20), transparent 32%),
+    radial-gradient(circle at 8% 94%, rgba(245, 158, 11, 0.12), transparent 30%),
+    linear-gradient(155deg, #071528 0%, #0b1f3a 52%, #102a4c 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: "";
+  position: absolute;
+  right: -38mm;
+  top: 74mm;
+  width: 118mm;
+  height: 118mm;
+  border: 0.6pt solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+.cover::after {
+  content: "";
+  position: absolute;
+  right: -18mm;
+  top: 94mm;
+  width: 78mm;
+  height: 78mm;
+  border: 0.6pt solid rgba(20, 184, 166, 0.18);
+  border-radius: 50%;
+}
+.cover > * { position: relative; z-index: 1; }
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cover-brand {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10.5pt;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.cover-brand span { color: #5eead4; }
+.cover-round {
+  font-family: "Montserrat", sans-serif;
+  font-size: 7.2pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.cover-main { margin-top: 26mm; max-width: 154mm; }
+.cover-eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 7.8pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5eead4;
+  margin-bottom: 7mm;
+}
+.cover-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 33pt;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 7mm;
+}
+.cover-subtitle {
+  font-family: "Carlito", "Noto Sans", sans-serif;
+  font-size: 13pt;
+  line-height: 1.5;
+  color: #cbd5e1;
+  max-width: 138mm;
+  margin: 0 0 9mm;
+}
+.cover-rule {
+  width: 22mm;
+  height: 1.2mm;
+  background: #f59e0b;
+  margin-bottom: 9mm;
+}
+.cover-stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+.cover-stats td {
+  width: 25%;
+  border-top: 0.6pt solid rgba(255, 255, 255, 0.22);
+  border-bottom: none;
+  padding: 5mm 6mm 0 0;
+  vertical-align: top;
+  background: none;
+}
+.stat-value {
+  font-family: "Montserrat", sans-serif;
+  font-size: 21pt;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+}
+.stat-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 6.8pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-top: 2mm;
+}
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 0.6pt solid rgba(255, 255, 255, 0.15);
+  padding-top: 6mm;
+}
+.cover-meta {
+  font-family: "Carlito", "Noto Sans", sans-serif;
+  font-size: 8.5pt;
+  line-height: 1.65;
+  color: #cbd5e1;
+}
+.cover-meta span {
+  display: inline-block;
+  width: 27mm;
+  font-family: "Montserrat", sans-serif;
+  font-size: 6.6pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.cover-mark {
+  width: 16mm;
+  height: 16mm;
+  border: 0.8pt solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 9pt;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+/* ---------- Contents ---------- */
+.toc-page { padding-top: 0; }
+.toc-kicker {
+  font-family: "Montserrat", sans-serif;
+  font-size: 7.8pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0f766e;
+  margin-bottom: 4mm;
+}
+.toc-heading {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0b1f3a;
+  margin: 0 0 6mm;
+}
+.toc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 8mm;
+}
+.toc-table td {
+  border-bottom: 0.5pt solid #e2e8f0;
+  padding: 3mm 0;
+  vertical-align: top;
+  background: none;
+}
+.toc-table tbody tr:nth-child(even) td { background: none; }
+.toc-num {
+  width: 14mm;
+  font-family: "Montserrat", sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  color: #0f766e;
+  letter-spacing: 0.08em;
+}
+.toc-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11.5pt;
+  font-weight: 600;
+  color: #0b1f3a;
+  margin-bottom: 1.5mm;
+}
+.toc-desc {
+  font-size: 9pt;
+  line-height: 1.4;
+  color: #64748b;
+}
+.toc-page-num {
+  width: 10mm;
+  text-align: right;
+  font-family: "Montserrat", sans-serif;
+  font-size: 9pt;
+  color: #94a3b8;
+}
+.toc-highlights {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 3.5mm 0;
+  margin: 0 0 6mm;
+}
+.toc-highlights td {
+  width: 33.33%;
+  background: #f8fafc;
+  border-top: 2pt solid #0f766e;
+  border-bottom: none;
+  padding: 4mm;
+  vertical-align: top;
+}
+.toc-hl-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 6.8pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 2mm;
+}
+.toc-hl-value {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10.5pt;
+  font-weight: 600;
+  color: #0b1f3a;
+  margin-bottom: 1.5mm;
+}
+.toc-hl-desc {
+  font-size: 8.4pt;
+  line-height: 1.4;
+  color: #64748b;
+}
+.toc-note {
+  font-size: 8.5pt;
+  color: #64748b;
+  border-top: 0.5pt solid #e2e8f0;
+  padding-top: 3mm;
+}
+</style>
+</head>
+<body>
+<section class="cover">
+  <div class="cover-top">
+    <div class="cover-brand">SupeRR <span>Selector</span></div>
+    <div class="cover-round">Season 2 · Round 1</div>
+  </div>
+  <div class="cover-main">
+    <div class="cover-eyebrow">Pressure-weighted T20 rankings</div>
+    <h1 class="cover-title">Who holds up<br>when the game is tight?</h1>
+    <p class="cover-subtitle">A reproducible ranking of the batters and bowlers who deliver when the match is on the line — built from 883 matches and 200,961 deliveries.</p>
+    <div class="cover-rule"></div>
+    <table class="cover-stats">
+      <tr>
+        <td><div class="stat-value">883</div><div class="stat-label">matches</div></td>
+        <td><div class="stat-value">200,961</div><div class="stat-label">deliveries</div></td>
+        <td><div class="stat-value">44 + 42</div><div class="stat-label">eligible players</div></td>
+        <td><div class="stat-value">85 / 15</div><div class="stat-label">level / improvement</div></td>
+      </tr>
+    </table>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-meta">
+      <div><span>Prepared for</span> SupeRR Selector Season 2 · Round 1</div>
+      <div><span>Data window</span> IPL 2022–2026 · T20 Internationals 2022–2026</div>
+      <div><span>Date</span> November 2026</div>
+    </div>
+    <div class="cover-mark">RR</div>
+  </div>
+</section>
+
+<section class="toc-page">
+  <div class="toc-kicker">Contents</div>
+  <div class="toc-heading">What this report covers</div>
+  <table class="toc-table">
+    <tr><td class="toc-num">01</td><td><div class="toc-title">1. Executive summary</div><div class="toc-desc">The headline top 10s and the three inputs to the Pressure Index.</div></td><td class="toc-page-num">3</td></tr>
+<tr><td class="toc-num">02</td><td><div class="toc-title">2. What the data contains</div><div class="toc-desc">Coverage, competition mix, and the deliberate treatment of the Asia Cup.</div></td><td class="toc-page-num">4</td></tr>
+<tr><td class="toc-num">03</td><td><div class="toc-title">3. Defining pressure</div><div class="toc-desc">Stakes, opponent strength, win probability, and the gated leverage formula.</div></td><td class="toc-page-num">5</td></tr>
+<tr><td class="toc-num">04</td><td><div class="toc-title">4. Measuring performance</div><div class="toc-desc">Baselines, per-ball impact, sample shrinkage, consistency, and eligibility.</div></td><td class="toc-page-num">8</td></tr>
+<tr><td class="toc-num">05</td><td><div class="toc-title">5. Results</div><div class="toc-desc">The final batting and bowling lists, with the evidence behind each selection.</div></td><td class="toc-page-num">11</td></tr>
+<tr><td class="toc-num">06</td><td><div class="toc-title">6. Reliability and sensitivity</div><div class="toc-desc">Consistency checks, robustness to modelling choices, and tier evidence.</div></td><td class="toc-page-num">14</td></tr>
+<tr><td class="toc-num">07</td><td><div class="toc-title">7. Limitations</div><div class="toc-desc">What the model does not capture, and how to read the uncertainty.</div></td><td class="toc-page-num">16</td></tr>
+<tr><td class="toc-num">08</td><td><div class="toc-title">8. Reproducibility</div><div class="toc-desc">Commands, outputs, and the full configuration used for the submission.</div></td><td class="toc-page-num">17</td></tr>
+  </table>
+  <table class="toc-highlights">
+    <tr>
+      <td><div class="toc-hl-label">Pressure Index</div><div class="toc-hl-value">Stakes × opponent × leverage</div><div class="toc-hl-desc">A calibrated win-probability model turns match state into a per-delivery pressure weight.</div></td>
+      <td><div class="toc-hl-label">Level-weighted score</div><div class="toc-hl-value">85% par · 15% own</div><div class="toc-hl-desc">Most of the judgement is against the situation; a smaller term rewards improvement on the player's own level.</div></td>
+      <td><div class="toc-hl-label">Sample guard</div><div class="toc-hl-value">400 balls · K = 600</div><div class="toc-hl-desc">Eligibility floor, shrinkage and a consistency adjustment stop short hot streaks from topping the lists.</div></td>
+    </tr>
+  </table>
+  <div class="toc-note">All figures are generated directly from the supplied data pack. The per-delivery audit trail is in <code>outputs/ball_pressure.csv</code>.</div>
+</section>
+<h2 id="1-executive-summary">1. Executive summary</h2>
+<p>We build a <strong>Pressure Index (PI)</strong> for every delivery from three ingredients:</p>
+<ol>
+<li><strong>Match stakes</strong> — a competition/stage weight that follows the requested ladder:
+   bilateral and Asia Cup group games &lt; IPL league &lt; IPL playoffs, with the Asia Cup final
+   deliberately kept below IPL league level rather than treated as a World Cup stand-in.</li>
+<li><strong>Opponent strength</strong> — the opponent's pre-match Elo rating, used as a dynamic proxy for
+   the ICC T20I ranking because the supplied pack contains no ranking file.</li>
+<li><strong>Situational pressure</strong> — a calibrated win-probability model converts runs left, balls
+   left, wickets remaining and the pre-match Elo gap into the chance the batting side wins.
+   Pressure peaks when the contest is genuinely in the balance and is damped in dead games.</li>
+</ol>
+<p>Each player's output in the top 30% highest-pressure deliveries — with a soft ramp around the
+cutoff — is then measured against a <strong>level-weighted expectation</strong>: 85% the neutral situation
+par and 15% the player's own usual level. The score is weighted by PI, shrunk for sample size
+and adjusted for how often the player delivered a positive pressure innings. Putting most of
+the weight on situation par means an elite player is judged mainly against the difficulty of
+the situation rather than only against their own high bar, while the 15% own-baseline term
+still rewards genuine improvement. The final lists are in Sections 5.1 and 5.2.</p>
+<blockquote>
+<p><strong>Headline result.</strong> <strong>Shreyas Iyer</strong> and <strong>Sunil Narine</strong> lead the batting and bowling
+lists. The ranking is 85% a level test against situation par and 15% an improvement test
+against the player's own baseline, with a 400-ball floor and sample-size shrinkage.</p>
+</blockquote>
+<p><strong>Headline selections</strong></p>
+<table class="data-table keep">
+<thead>
+<tr>
+<th class="rank" style="text-align: right;">Rank</th>
+<th>Batter</th>
+<th class="num" style="text-align: right;">Score</th>
+<th>Bowler</th>
+<th class="num" style="text-align: right;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rank" style="text-align: right;">1</td>
+<td>Shreyas Iyer</td>
+<td class="num" style="text-align: right;">+0.333</td>
+<td>Sunil Narine</td>
+<td class="num" style="text-align: right;">+0.196</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">2</td>
+<td>Suryakumar Yadav</td>
+<td class="num" style="text-align: right;">+0.330</td>
+<td>Jasprit Bumrah</td>
+<td class="num" style="text-align: right;">+0.170</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">3</td>
+<td>Shubman Gill</td>
+<td class="num" style="text-align: right;">+0.329</td>
+<td>Matheesha Pathirana</td>
+<td class="num" style="text-align: right;">+0.165</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">4</td>
+<td>Rajat Patidar</td>
+<td class="num" style="text-align: right;">+0.318</td>
+<td>Harshal Patel</td>
+<td class="num" style="text-align: right;">+0.163</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">5</td>
+<td>Nicholas Pooran</td>
+<td class="num" style="text-align: right;">+0.286</td>
+<td>Harpreet Brar</td>
+<td class="num" style="text-align: right;">+0.136</td>
+</tr>
+</tbody>
+</table>
+<p>The full top 10s, with pressure strike rates, economies, sample sizes and consistency, are in
+Sections 5.1 and 5.2.</p>
+<hr/>
+<h2 id="2-what-the-data-contains">2. What the data contains</h2>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>File</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ball_by_ball.csv</code></td>
+<td>Delivery-level outcome, batter, bowler, extras, dismissal</td>
+</tr>
+<tr>
+<td><code>matches.csv</code></td>
+<td>Competition, date, venue, teams, result, revised targets/overs</td>
+</tr>
+<tr>
+<td><code>competitions.csv</code></td>
+<td>Competition name, format and season</td>
+</tr>
+<tr>
+<td><code>teams.csv</code></td>
+<td>Team names</td>
+</tr>
+<tr>
+<td><code>playing_eleven.csv</code>, <code>competition_team_player_mapping.csv</code></td>
+<td>Player/team context (not needed for the core ratings)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Coverage by season.</strong> The pack spans five calendar years and two formats. Every delivery
+is used, including those outside the pressure set, because the own-baseline and situation-par
+estimates need the full population.</p>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>Season</th>
+<th class="num" style="text-align: right;">Matches</th>
+<th class="num" style="text-align: right;">Deliveries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022</td>
+<td class="num" style="text-align: right;">168</td>
+<td class="num" style="text-align: right;">39,627</td>
+</tr>
+<tr>
+<td>2022/23</td>
+<td class="num" style="text-align: right;">12</td>
+<td class="num" style="text-align: right;">2,838</td>
+</tr>
+<tr>
+<td>2023</td>
+<td class="num" style="text-align: right;">137</td>
+<td class="num" style="text-align: right;">32,249</td>
+</tr>
+<tr>
+<td>2023/24</td>
+<td class="num" style="text-align: right;">3</td>
+<td class="num" style="text-align: right;">739</td>
+</tr>
+<tr>
+<td>2024</td>
+<td class="num" style="text-align: right;">198</td>
+<td class="num" style="text-align: right;">44,289</td>
+</tr>
+<tr>
+<td>2024/25</td>
+<td class="num" style="text-align: right;">3</td>
+<td class="num" style="text-align: right;">754</td>
+</tr>
+<tr>
+<td>2025</td>
+<td class="num" style="text-align: right;">216</td>
+<td class="num" style="text-align: right;">47,383</td>
+</tr>
+<tr>
+<td>2026</td>
+<td class="num" style="text-align: right;">146</td>
+<td class="num" style="text-align: right;">33,082</td>
+</tr>
+</tbody>
+</table>
+<p>The pack contains <strong>no ICC Men's T20 World Cup</strong>. The senior multi-nation tournament present
+is the <strong>Asia Cup</strong> (2022 and 2025); the development equivalents are the <strong>Emerging Teams Asia
+Cup 2024</strong> and <strong>Asia Cup Rising Stars 2025</strong>. Because the pack has no World Cup, and because
+the Asia Cup is not given World-Cup-level weight in this submission, all Asia Cup events sit
+<strong>below IPL league level</strong> in the stakes ladder. The requested ordering is therefore preserved
+where the data allows it: bilateral &lt; IPL league &lt; IPL playoffs, with the Asia Cup final above
+bilateral cricket but below an IPL league match.</p>
+<hr/>
+<h2 id="3-defining-pressure">3. Defining pressure</h2>
+<h3 id="31-match-stakes-s">3.1 Match stakes (S)</h3>
+<p>Every match is assigned a tier from its competition name and stage:</p>
+<table class="data-table keep compact">
+<thead>
+<tr>
+<th>Tier</th>
+<th class="num" style="text-align: right;">Weight</th>
+<th>Examples in the pack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bilateral T20I</td>
+<td class="num" style="text-align: right;">0.6</td>
+<td>England in Pakistan T20I Series</td>
+</tr>
+<tr>
+<td>Qualifier</td>
+<td class="num" style="text-align: right;">0.6</td>
+<td>Asia Cup T20 Qualifiers</td>
+</tr>
+<tr>
+<td>Emerging league</td>
+<td class="num" style="text-align: right;">0.6</td>
+<td>Emerging Teams Asia Cup group</td>
+</tr>
+<tr>
+<td>Tri-series</td>
+<td class="num" style="text-align: right;">0.7</td>
+<td>New Zealand T20I Tri Series</td>
+</tr>
+<tr>
+<td>Asia Cup league</td>
+<td class="num" style="text-align: right;">0.7</td>
+<td>Asia Cup group / Super 4</td>
+</tr>
+<tr>
+<td>Emerging knockout</td>
+<td class="num" style="text-align: right;">0.75</td>
+<td>Emerging Asia Cup semi/final</td>
+</tr>
+<tr>
+<td>Asia Cup final</td>
+<td class="num" style="text-align: right;">0.85</td>
+<td>Asia Cup final</td>
+</tr>
+<tr>
+<td>IPL league</td>
+<td class="num" style="text-align: right;">1.0</td>
+<td>IPL 2022–2026 league stage</td>
+</tr>
+<tr>
+<td>IPL playoff</td>
+<td class="num" style="text-align: right;">1.4</td>
+<td>Qualifier, Eliminator, Final</td>
+</tr>
+</tbody>
+</table>
+<p>This reproduces the requested ordering: bilateral &lt; IPL league &lt; IPL playoffs. The Asia Cup is
+not elevated to the missing World Cup rung; its league stage is weighted alongside a tri-series
+and its final sits above bilateral cricket but below IPL league level. IPL matches therefore
+carry the highest stakes in the pack, and IPL playoffs carry the highest weight overall.</p>
+<h3 id="32-opponent-strength-o">3.2 Opponent strength (O)</h3>
+<p>The pack has no ICC ranking table, so we compute a <strong>pre-match Elo rating</strong> for every team from
+the results in the same data, separately for the IPL and international pools. The opponent's
+pre-match Elo is converted to a 0–1 strength and mapped to a multiplier:</p>
+<pre><code>O = 0.80 + 0.40 * strength(opponent Elo)
+</code></pre>
+<p>so a player faces at most a ±20% stakes adjustment for opponent quality. Elo is updated after
+each match (K = 24.0, home advantage = 20.0 Elo points). Using a
+dynamic Elo rather than a single static ranking snapshot is deliberate: it tracks form and
+opponent strength at the time of the match, and it is fully reproducible from the supplied data.</p>
+<h3 id="33-situational-pressure-p">3.3 Situational pressure (P)</h3>
+<p>An earlier version of this model measured closeness with hand-set run-rate terms. That has a
+known failure mode: in a chase that is already won (20 needed off 30 with eight wickets in
+hand) the batting side is “ahead of par”, so a naive mirror-image formula calls it high bowling
+pressure, while a genuine death-over squeeze (45 off 18 with four wickets) can score low. We
+therefore replace the hand-set closeness terms with a <strong>win-probability model fitted on the
+supplied ball-by-ball data</strong>.</p>
+<p>For every delivery, before the ball is bowled, we form a small state vector:</p>
+<ul>
+<li><code>adv</code> — the projected final score minus the target (2nd innings) or the venue par score
+  (1st innings), divided by 20;</li>
+<li><code>lost</code> — wickets already lost, divided by 10;</li>
+<li><code>elapsed</code> — legal balls bowled divided by the innings length;</li>
+<li><code>elo_diff</code> — the batting team's pre-match Elo minus the bowling team's, divided by 400;</li>
+<li>the interaction <code>adv * elapsed</code> and a constant.</li>
+</ul>
+<p>A separate logistic model is fitted for each innings (<code>p = sigmoid(w · x)</code>), with the label
+“did the batting team win?” and L2 regularisation. The fitted coefficients are:</p>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>Innings</th>
+<th class="num" style="text-align: right;">adv</th>
+<th class="num" style="text-align: right;">lost</th>
+<th class="num" style="text-align: right;">adv × elapsed</th>
+<th class="num" style="text-align: right;">Elo diff</th>
+<th class="num" style="text-align: right;">constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First</td>
+<td class="num" style="text-align: right;">+0.64</td>
+<td class="num" style="text-align: right;">-0.70</td>
+<td class="num" style="text-align: right;">-0.06</td>
+<td class="num" style="text-align: right;">+1.64</td>
+<td class="num" style="text-align: right;">+0.35</td>
+</tr>
+<tr>
+<td>Second</td>
+<td class="num" style="text-align: right;">+0.62</td>
+<td class="num" style="text-align: right;">-1.25</td>
+<td class="num" style="text-align: right;">+1.81</td>
+<td class="num" style="text-align: right;">+0.78</td>
+<td class="num" style="text-align: right;">+0.63</td>
+</tr>
+</tbody>
+</table>
+<p>The model is used only to <strong>order situations by leverage</strong>, not as a claim that a player caused
+a win-probability change. Leverage is the classic <code>4p(1-p)</code> term, which is 1 when the game is a
+coin-flip and 0 when it is decided. We damp it early in the innings, when every game is still
+nominally close but little has been decided:</p>
+<pre><code>p = sigmoid(w · x)
+tension = 4 * p * (1 - p) * (0.4 + (1 - 0.4) * elapsed)
+</code></pre>
+<p>The two roles then get a different resources term, and — importantly — that term is <strong>gated by
+tension</strong>:</p>
+<pre><code>wk_bat  = clip(wickets_lost / 9, 0, 1)      # a batter is under pressure when wickets fall
+wk_bowl = clip(wickets_left / 10, 0, 1)     # a bowler is under pressure when wickets remain
+P_bat   = tension * (0.5 + 0.25 * wk_bat)  + 0.25 * elapsed
+P_bowl  = tension * (0.5 + 0.25 * wk_bowl) + 0.25 * elapsed
+</code></pre>
+<p>Gating the resources term is what removes the dead-game distortion completely. Wickets only
+create pressure while the match is alive: once <code>p</code> has collapsed, <code>tension</code> goes to zero and
+the resource term vanishes with it. The only term that survives a decided game is the small
+late-innings term, which is why such deliveries fall below the pressure threshold instead of
+inflating a bowler's tally.</p>
+<p>Two worked chases (target 160, par 8.5) show the effect. A cakewalk — 20 needed off 30 with
+eight wickets in hand — has <code>p ≈ 0.93</code>, <code>tension ≈ 0.22</code>, and scores <strong>PI_bowl ≈ 34</strong>. A
+genuine squeeze — 45 needed off 18 with four wickets — has <code>p ≈ 0.10</code>, <code>tension ≈ 0.32</code>, and
+scores <strong>PI_bowl ≈ 41</strong>. The tight chase now ranks higher for the bowler, which is the correct
+ordering. A knife-edge game (<code>p ≈ 0.50</code>) has <code>tension ≈ 1.00</code> and dominates both. Runs left,
+balls left and wickets remaining all still enter through the win-probability model and the
+<code>elapsed</code> / resources terms, so the brief's situational inputs remain explicit.</p>
+<h3 id="34-entry-context">3.4 Entry context</h3>
+<p>The situation a player walks into matters. For every innings we record the PI of the <strong>first
+ball faced by the batter</strong> and the <strong>first ball bowled by the bowler</strong>. Each pressure delivery
+weight is multiplied by</p>
+<pre><code>1 + 0.15 * entry_PI / 100
+</code></pre>
+<p>so a player who enters at 20/3 in the fifth over, or comes on in the death overs of a tight
+chase, carries a modest additional weight through that innings. This directly implements the
+“when the batter came in / when the bowler came on” requirement.</p>
+<h3 id="35-pressure-index-and-threshold">3.5 Pressure Index and threshold</h3>
+<p>The per-delivery index is</p>
+<pre><code>PI = 100 * S * O * P
+</code></pre>
+<p>PI is unbounded above; the observed range is about 0–137. A delivery is <strong>core pressure</strong> if
+it is in the <strong>top 30% of PI for that role</strong> (70th percentile). In this dataset the thresholds
+are:</p>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>Role</th>
+<th class="num" style="text-align: right;">70th-percentile threshold</th>
+<th style="text-align: right;">Pressure deliveries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batting</td>
+<td class="num" style="text-align: right;">39.2</td>
+<td style="text-align: right;">57,978 of 193,250 balls faced</td>
+</tr>
+<tr>
+<td>Bowling</td>
+<td class="num" style="text-align: right;">43.6</td>
+<td style="text-align: right;">57,733 of 192,411 legal balls</td>
+</tr>
+</tbody>
+</table>
+<figure><img alt="Pressure Index distribution" src="figures/fig_pressure_dist.png"/><figcaption>Figure 1. Pressure Index distribution</figcaption></figure>
+<p>The percentile threshold defines the core pressure set, but the score does not use a hard
+cutoff: Section 4.4 describes the soft logistic ramp that lets deliveries just below the
+threshold contribute partial weight. Section 6 shows how sensitive the lists are to moving the
+threshold.</p>
+<hr/>
+<h2 id="4-measuring-performance">4. Measuring performance</h2>
+<h3 id="41-baselines-and-expected-performance">4.1 Baselines and expected performance</h3>
+<p>For each player we compute two expectations:</p>
+<ol>
+<li><strong>Own baseline</strong> — the player's overall runs per ball (batting) or runs conceded per legal
+   ball (bowling) across the whole dataset. This is the “usual level” the brief asks for.</li>
+<li><strong>Situation par</strong> — the phase-specific par rate at the same point of the innings, adjusted
+   for the venue. Phases are powerplay (first 30% of the innings), middle (30–75%) and death
+   (last 25%). The fitted values are:</li>
+</ol>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>Phase</th>
+<th class="num" style="text-align: right;">Batting runs/ball</th>
+<th class="num" style="text-align: right;">Batting wicket rate</th>
+<th class="num" style="text-align: right;">Bowling runs/ball</th>
+<th class="num" style="text-align: right;">Bowling wicket rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Powerplay</td>
+<td class="num" style="text-align: right;">1.3552</td>
+<td class="num" style="text-align: right;">0.0453</td>
+<td class="num" style="text-align: right;">1.3550</td>
+<td class="num" style="text-align: right;">0.0447</td>
+</tr>
+<tr>
+<td>Middle</td>
+<td class="num" style="text-align: right;">1.3258</td>
+<td class="num" style="text-align: right;">0.0478</td>
+<td class="num" style="text-align: right;">1.3257</td>
+<td class="num" style="text-align: right;">0.0472</td>
+</tr>
+<tr>
+<td>Death</td>
+<td class="num" style="text-align: right;">1.5964</td>
+<td class="num" style="text-align: right;">0.0824</td>
+<td class="num" style="text-align: right;">1.5955</td>
+<td class="num" style="text-align: right;">0.0781</td>
+</tr>
+</tbody>
+</table>
+<p>The blended baseline used in the rating is</p>
+<pre><code>base = 0.85 * situation_par + (1 - 0.85) * own_baseline
+</code></pre>
+<p>With <code>α = 0.85</code>, this is <strong>85% situation par and 15% own baseline</strong>. For
+batting, the per-ball impact can be written as</p>
+<pre><code>impact = 0.85 * (actual - par) + (1 - 0.85) * (actual - own)
+</code></pre>
+<p>and for bowling the signs reverse:</p>
+<pre><code>impact = 0.85 * (par - conceded) + (1 - 0.85) * (own - conceded)
+</code></pre>
+<p>So 85% of the judgement is the <strong>level test</strong> — did the player beat what a typical player would
+be expected to do in that exact situation? — and 15% is the <strong>improvement test</strong> — did the player
+beat their own usual level? Under the old 50/50 blend the own baseline carried half the weight,
+which let a modest relative improver outrank an elite player who merely maintained an already
+high level. At 85/15 the level test has clear precedence, while the own-baseline term stays
+large enough that a player far above their own history still gains. Setting the weight to 1.0 would drop the own
+baseline entirely and make the score pure performance against situation par; 0.85 deliberately
+keeps a 15% improvement signal.</p>
+<h3 id="42-batting-impact">4.2 Batting impact</h3>
+<p>For every pressure ball faced:</p>
+<pre><code>impact_i = (runs_off_bat - base_runs_per_ball) - wv_i * (out - base_wicket_rate)
+</code></pre>
+<p>The wicket value is no longer a flat 5 runs. It varies with the phase, the dismissed batter's
+position in the order, and how set that batter is:</p>
+<pre><code>wv_i = 5.0 * order_mult * phase_mult * (1 + 0.4 * clip(batter_runs / 30, 0, 1))
+</code></pre>
+<p><code>order_mult</code> runs from 1.60 for an opener to 0.20 for a No. 11; <code>phase_mult</code> is
+1.2 in the powerplay, 1.0 in the middle and 1.05
+at the death. Across the pack the average wicket value is about 7.5 runs, but the spread is
+wide: a top-order powerplay wicket is worth roughly 10–13 runs, while a tailender dismissed in
+the 20th over is worth roughly 1.5–3. This stops the model treating a wicket at 20/3 and a
+wicket at 180/8 as the same event. The per-ball impacts are weighted by PI and the entry
+factor.</p>
+<h3 id="43-bowling-impact">4.3 Bowling impact</h3>
+<p>For every pressure legal ball:</p>
+<pre><code>impact_i = (base_runs_per_ball - runs_conceded) + wv_i * (wicket - base_wicket_rate)
+</code></pre>
+<p>A bowler is rewarded for conceding fewer runs than expected and for taking wickets above
+expectation. The same per-ball wicket value applies to the bowling side: taking the wicket of a
+set top-order batter is worth more than taking a tailender's. Byes and leg-byes are excluded
+from runs conceded; wides and no-balls are included; wides and no-balls do not count as legal
+balls.</p>
+<h3 id="44-weighting-shrinkage-and-consistency">4.4 Weighting, shrinkage and consistency</h3>
+<p>The score does not use a hard in/out cutoff. A delivery just below the 70th percentile is not
+obviously less pressure than one just above it, so each delivery receives a soft weight:</p>
+<pre><code>soft_i = sigmoid((PI_i - threshold) / tau)
+w_i = PI_i * soft_i * (1 + 0.15 * entry_PI / 100)
+</code></pre>
+<p>with <code>tau = 0.1 * threshold</code> (about 3.9 batting and
+4.4 bowling PI points).
+Deliveries down to <code>threshold - 2*tau</code> are included with a small weight; below that they are
+dropped. The <strong>core</strong> pressure count (used for eligibility and the tables) still counts only
+deliveries at or above the 70th percentile, so the soft band cannot be used to manufacture a
+qualifying sample.</p>
+<p>The raw pressure score is the weighted mean impact:</p>
+<pre><code>raw = sum(w_i * impact_i) / sum(w_i)
+</code></pre>
+<p>Small samples are noisy, so the score is shrunk towards zero:</p>
+<pre><code>ppi = raw * sum(w_i) / (sum(w_i) + 600.0)
+</code></pre>
+<p>With K = 600, a player with 400 core pressure balls keeps about
+400 / (400 + 600) ≈ 0.40 of the raw impact, while
+one with 900 keeps 0.60. Combined with the 400-ball eligibility
+floor below, this prevents a short hot streak from topping a list. The full rankings also
+report the standard error, <code>effective_balls</code> and <code>reliability</code> as diagnostics.</p>
+<p>Finally, we measure <strong>consistency</strong>: the share of a player's pressure innings (minimum
+6 pressure balls) in which the player's impact was positive. The final
+score is</p>
+<pre><code>final = ppi * (1 - 0.2 + 0.2 * consistency)
+</code></pre>
+<p>so a player who repeatedly delivers in pressure innings is preferred to one with the same
+average but a boom-or-bust record.</p>
+<h3 id="45-eligibility">4.5 Eligibility</h3>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>Rule</th>
+<th class="num" style="text-align: right;">Batters</th>
+<th class="num" style="text-align: right;">Bowlers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum total balls</td>
+<td class="num" style="text-align: right;">400</td>
+<td class="num" style="text-align: right;">400</td>
+</tr>
+<tr>
+<td>Minimum pressure balls</td>
+<td class="num" style="text-align: right;">400</td>
+<td class="num" style="text-align: right;">400</td>
+</tr>
+<tr>
+<td>Minimum pressure innings</td>
+<td class="num" style="text-align: right;">5</td>
+<td class="num" style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p>These thresholds leave <strong>44 eligible batters</strong> and
+<strong>42 eligible bowlers</strong>. They deliberately exclude short cameos: a
+player must have faced at least 400 core pressure deliveries (or
+bowled 400) to enter a list. This floor removes thin but
+eye-catching records. With the floor switched off, <strong>Vaibhav Sooryavanshi</strong> (93 pressure
+balls) would top the batting list, followed by <strong>Najibullah Zadran</strong> (102) and
+<strong>Rilee Rossouw</strong> (120); <strong>Quinton de Kock</strong> (268) would sit seventh. On the bowling side
+<strong>Dushan Hemantha</strong> (57) and <strong>Hasan Mahmud</strong> (57) would lead. None of these is a fair
+comparison with a 700-ball body of work, so the floor excludes them. Every player in the final
+top 10 has at least
+424 pressure balls, so all clear the
+floor comfortably.</p>
+<p>Per the submission instruction, players representing <strong>Pakistan</strong> or <strong>Pakistan A</strong>
+(65 players in the pack) are excluded from both rankings. Their
+deliveries remain in the underlying data only as opposition context; no Pakistani player can
+appear in either top 10.</p>
+<hr/>
+<h2 id="5-results">5. Results</h2>
+<h3 id="51-top-10-batters-under-pressure">5.1 Top 10 batters under pressure</h3>
+<table class="data-table keep">
+<thead>
+<tr>
+<th class="rank" style="text-align: right;">Rank</th>
+<th>Player</th>
+<th>Team</th>
+<th class="num" style="text-align: right;">Pressure balls</th>
+<th class="num" style="text-align: right;">SR usual</th>
+<th class="num" style="text-align: right;">SR pressure</th>
+<th class="num" style="text-align: right;">SR par</th>
+<th class="num" style="text-align: right;">Final score</th>
+<th class="num" style="text-align: right;">Consistency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rank" style="text-align: right;">1</td>
+<td>Shreyas Iyer</td>
+<td>India</td>
+<td class="num" style="text-align: right;">696</td>
+<td class="num" style="text-align: right;">153.14</td>
+<td class="num" style="text-align: right;">171.26</td>
+<td class="num" style="text-align: right;">150.15</td>
+<td class="num" style="text-align: right;">+0.333</td>
+<td class="num" style="text-align: right;">0.511</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">2</td>
+<td>Suryakumar Yadav</td>
+<td>India</td>
+<td class="num" style="text-align: right;">881</td>
+<td class="num" style="text-align: right;">166.29</td>
+<td class="num" style="text-align: right;">170.83</td>
+<td class="num" style="text-align: right;">144.75</td>
+<td class="num" style="text-align: right;">+0.330</td>
+<td class="num" style="text-align: right;">0.627</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">3</td>
+<td>Shubman Gill</td>
+<td>Gujarat Titans</td>
+<td class="num" style="text-align: right;">756</td>
+<td class="num" style="text-align: right;">149.39</td>
+<td class="num" style="text-align: right;">171.3</td>
+<td class="num" style="text-align: right;">147.99</td>
+<td class="num" style="text-align: right;">+0.329</td>
+<td class="num" style="text-align: right;">0.435</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">4</td>
+<td>Rajat Patidar</td>
+<td>Royal Challengers Bengaluru</td>
+<td class="num" style="text-align: right;">557</td>
+<td class="num" style="text-align: right;">167.86</td>
+<td class="num" style="text-align: right;">178.1</td>
+<td class="num" style="text-align: right;">148.75</td>
+<td class="num" style="text-align: right;">+0.318</td>
+<td class="num" style="text-align: right;">0.533</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">5</td>
+<td>Nicholas Pooran</td>
+<td>Lucknow Super Giants</td>
+<td class="num" style="text-align: right;">815</td>
+<td class="num" style="text-align: right;">157.1</td>
+<td class="num" style="text-align: right;">165.77</td>
+<td class="num" style="text-align: right;">148.94</td>
+<td class="num" style="text-align: right;">+0.286</td>
+<td class="num" style="text-align: right;">0.534</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">6</td>
+<td>Ruturaj Gaikwad</td>
+<td>Chennai Super Kings</td>
+<td class="num" style="text-align: right;">464</td>
+<td class="num" style="text-align: right;">139.02</td>
+<td class="num" style="text-align: right;">165.52</td>
+<td class="num" style="text-align: right;">139.58</td>
+<td class="num" style="text-align: right;">+0.278</td>
+<td class="num" style="text-align: right;">0.486</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">7</td>
+<td>Jos Buttler</td>
+<td>Rajasthan Royals</td>
+<td class="num" style="text-align: right;">781</td>
+<td class="num" style="text-align: right;">155.39</td>
+<td class="num" style="text-align: right;">161.72</td>
+<td class="num" style="text-align: right;">150.62</td>
+<td class="num" style="text-align: right;">+0.276</td>
+<td class="num" style="text-align: right;">0.5</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">8</td>
+<td>Lokesh Rahul</td>
+<td>Lucknow Super Giants</td>
+<td class="num" style="text-align: right;">781</td>
+<td class="num" style="text-align: right;">141.29</td>
+<td class="num" style="text-align: right;">161.59</td>
+<td class="num" style="text-align: right;">145.98</td>
+<td class="num" style="text-align: right;">+0.272</td>
+<td class="num" style="text-align: right;">0.486</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">9</td>
+<td>Heinrich Klaasen</td>
+<td>Sunrisers Hyderabad</td>
+<td class="num" style="text-align: right;">933</td>
+<td class="num" style="text-align: right;">166.76</td>
+<td class="num" style="text-align: right;">177.06</td>
+<td class="num" style="text-align: right;">154.85</td>
+<td class="num" style="text-align: right;">+0.224</td>
+<td class="num" style="text-align: right;">0.585</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">10</td>
+<td>Ishan Kishan</td>
+<td>India</td>
+<td class="num" style="text-align: right;">524</td>
+<td class="num" style="text-align: right;">146.37</td>
+<td class="num" style="text-align: right;">170.23</td>
+<td class="num" style="text-align: right;">144.65</td>
+<td class="num" style="text-align: right;">+0.221</td>
+<td class="num" style="text-align: right;">0.405</td>
+</tr>
+</tbody>
+</table>
+<figure><img alt="Usual vs pressure strike rate for the top 10 batters" src="figures/fig_top_bat.png"/><figcaption>Figure 2. Usual vs pressure strike rate for the top 10 batters</figcaption></figure>
+<h3 id="52-top-10-bowlers-under-pressure">5.2 Top 10 bowlers under pressure</h3>
+<table class="data-table keep">
+<thead>
+<tr>
+<th class="rank" style="text-align: right;">Rank</th>
+<th>Player</th>
+<th>Team</th>
+<th class="num" style="text-align: right;">Pressure balls</th>
+<th class="num" style="text-align: right;">Econ usual</th>
+<th class="num" style="text-align: right;">Econ pressure</th>
+<th class="num" style="text-align: right;">Econ par</th>
+<th class="num" style="text-align: right;">Wkts</th>
+<th class="num" style="text-align: right;">Final score</th>
+<th class="num" style="text-align: right;">Consistency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rank" style="text-align: right;">1</td>
+<td>Sunil Narine</td>
+<td>Kolkata Knight Riders</td>
+<td class="num" style="text-align: right;">1006</td>
+<td class="num" style="text-align: right;">6.87</td>
+<td class="num" style="text-align: right;">6.71</td>
+<td class="num" style="text-align: right;">8.66</td>
+<td class="num" style="text-align: right;">48</td>
+<td class="num" style="text-align: right;">+0.196</td>
+<td class="num" style="text-align: right;">0.621</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">2</td>
+<td>Jasprit Bumrah</td>
+<td>Mumbai Indians</td>
+<td class="num" style="text-align: right;">677</td>
+<td class="num" style="text-align: right;">7.27</td>
+<td class="num" style="text-align: right;">7.55</td>
+<td class="num" style="text-align: right;">9.27</td>
+<td class="num" style="text-align: right;">36</td>
+<td class="num" style="text-align: right;">+0.170</td>
+<td class="num" style="text-align: right;">0.509</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">3</td>
+<td>Matheesha Pathirana</td>
+<td>Chennai Super Kings</td>
+<td class="num" style="text-align: right;">573</td>
+<td class="num" style="text-align: right;">8.85</td>
+<td class="num" style="text-align: right;">7.93</td>
+<td class="num" style="text-align: right;">9.15</td>
+<td class="num" style="text-align: right;">41</td>
+<td class="num" style="text-align: right;">+0.165</td>
+<td class="num" style="text-align: right;">0.538</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">4</td>
+<td>Harshal Patel</td>
+<td>Royal Challengers Bengaluru</td>
+<td class="num" style="text-align: right;">896</td>
+<td class="num" style="text-align: right;">9.32</td>
+<td class="num" style="text-align: right;">8.1</td>
+<td class="num" style="text-align: right;">9.29</td>
+<td class="num" style="text-align: right;">59</td>
+<td class="num" style="text-align: right;">+0.163</td>
+<td class="num" style="text-align: right;">0.525</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">5</td>
+<td>Harpreet Brar</td>
+<td>Punjab Kings</td>
+<td class="num" style="text-align: right;">424</td>
+<td class="num" style="text-align: right;">8.25</td>
+<td class="num" style="text-align: right;">7.87</td>
+<td class="num" style="text-align: right;">8.76</td>
+<td class="num" style="text-align: right;">22</td>
+<td class="num" style="text-align: right;">+0.136</td>
+<td class="num" style="text-align: right;">0.484</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">6</td>
+<td>Noor Ahmad</td>
+<td>Chennai Super Kings</td>
+<td class="num" style="text-align: right;">784</td>
+<td class="num" style="text-align: right;">8.01</td>
+<td class="num" style="text-align: right;">7.93</td>
+<td class="num" style="text-align: right;">8.55</td>
+<td class="num" style="text-align: right;">44</td>
+<td class="num" style="text-align: right;">+0.128</td>
+<td class="num" style="text-align: right;">0.543</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">7</td>
+<td>Wanindu Hasaranga</td>
+<td>Sri Lanka</td>
+<td class="num" style="text-align: right;">688</td>
+<td class="num" style="text-align: right;">7.94</td>
+<td class="num" style="text-align: right;">8.31</td>
+<td class="num" style="text-align: right;">8.54</td>
+<td class="num" style="text-align: right;">43</td>
+<td class="num" style="text-align: right;">+0.127</td>
+<td class="num" style="text-align: right;">0.475</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">8</td>
+<td>Krunal Pandya</td>
+<td>Lucknow Super Giants</td>
+<td class="num" style="text-align: right;">879</td>
+<td class="num" style="text-align: right;">7.81</td>
+<td class="num" style="text-align: right;">7.49</td>
+<td class="num" style="text-align: right;">8.34</td>
+<td class="num" style="text-align: right;">42</td>
+<td class="num" style="text-align: right;">+0.090</td>
+<td class="num" style="text-align: right;">0.463</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">9</td>
+<td>Kuldeep Yadav</td>
+<td>Delhi Capitals</td>
+<td class="num" style="text-align: right;">1135</td>
+<td class="num" style="text-align: right;">8.02</td>
+<td class="num" style="text-align: right;">7.89</td>
+<td class="num" style="text-align: right;">8.65</td>
+<td class="num" style="text-align: right;">64</td>
+<td class="num" style="text-align: right;">+0.069</td>
+<td class="num" style="text-align: right;">0.623</td>
+</tr>
+<tr>
+<td class="rank" style="text-align: right;">10</td>
+<td>Varun Chakravarthy</td>
+<td>Kolkata Knight Riders</td>
+<td class="num" style="text-align: right;">972</td>
+<td class="num" style="text-align: right;">8.01</td>
+<td class="num" style="text-align: right;">7.83</td>
+<td class="num" style="text-align: right;">8.7</td>
+<td class="num" style="text-align: right;">48</td>
+<td class="num" style="text-align: right;">+0.041</td>
+<td class="num" style="text-align: right;">0.551</td>
+</tr>
+</tbody>
+</table>
+<figure><img alt="Usual vs pressure economy for the top 10 bowlers" src="figures/fig_top_bowl.png"/><figcaption>Figure 3. Usual vs pressure economy for the top 10 bowlers</figcaption></figure>
+<h3 id="53-reading-the-lists">5.3 Reading the lists</h3>
+<ul>
+<li><strong>Shreyas Iyer</strong> tops the batting list: 696 pressure balls across
+  45 pressure innings, a strike rate of 171.26
+  against a usual 153.14 and a phase/venue par of 150.15. Both
+  components are positive — 0.2502 runs per ball from scoring and
+  0.1241 runs per ball from wickets — and the lead survives sample-size
+  shrinkage and the consistency adjustment (0.511).</li>
+<li><strong>Suryakumar Yadav</strong> and <strong>Shubman Gill</strong> are effectively tied for second and third
+  (0.330 vs 0.329). Surya has
+  881 pressure balls at a strike rate of 170.83
+  against a usual 166.29 and par 144.75; Gill has
+  756 balls at 171.3 against
+  149.39 and par 147.99. Surya's consistency
+  (0.627) is the highest in the batting top 10; Gill's is lower
+  (0.435) and his run impact is marginally smaller
+  (0.2707 vs 0.2738).</li>
+<li><strong>Rajat Patidar</strong> is fourth with the highest run impact in the list
+  (0.3425 per ball) and a pressure strike rate of
+  178.1, but on a smaller sample (557 balls) and
+  with almost no wicket impact (0.014).</li>
+<li><strong>Nicholas Pooran</strong> is fifth (815 balls, pressure strike rate
+  165.77 against 157.1 usual and
+  148.94 par), with the third-best wicket impact among batters
+  (0.129). <strong>Ruturaj Gaikwad</strong> and <strong>Jos Buttler</strong> follow in sixth and
+  seventh; Buttler's wicket impact (0.1591) is the best among the batters.</li>
+<li><strong>Lokesh Rahul</strong> is eighth (781 balls, 161.59
+  against 141.29 usual), <strong>Heinrich Klaasen</strong> ninth and <strong>Ishan Kishan</strong> tenth.
+  Klaasen has the second-highest pressure strike rate (177.06) and the
+  largest batting sample (933 balls), but his own baseline is already
+  166.76 and par is 154.85, so under the level-weighted bar
+  his margin is smaller than the raw strike rate suggests. Ishan has a strong run impact
+  (0.2975) but a negative wicket impact (-0.041) and the
+  lowest consistency in the top 10 (0.405), which is why he sits tenth.</li>
+<li><strong>Sunil Narine</strong> tops the bowling list with 1006 pressure balls, an
+  economy of 6.71 against a usual
+  6.87 and a par of 8.66. His run impact is
+  0.2539 per ball; the wicket component is slightly negative
+  (-0.04), so his pressure wicket rate is a little below the blended bar,
+  but his run suppression and consistency (0.621) carry him to first.</li>
+<li><strong>Jasprit Bumrah</strong> is second (677 balls). His pressure economy
+  of 7.55 is worse than his own usual
+  7.27 but far better than the situation par of
+  9.27, giving him the best run impact in the list
+  (0.2643 per ball). The wicket component is
+  -0.0738: his pressure wicket rate is below the situation par, even
+  though his raw wicket tally is high. Under the level-weighted blend his run suppression is
+  enough for second; he is no longer judged mainly against his own elite baseline.</li>
+<li><strong>Matheesha Pathirana</strong> and <strong>Harshal Patel</strong> are third and fourth
+  (0.165 vs 0.163). Pathirana has the better
+  absolute economy (7.93 against
+  8.85 usual and 9.15 par); Harshal has the
+  larger sample (896 balls against 573) and a
+  bigger improvement over his own level. Both have positive wicket impacts
+  (0.0396 and 0.0297).</li>
+<li><strong>Harpreet Brar</strong>, <strong>Noor Ahmad</strong> and <strong>Wanindu Hasaranga</strong> fill fifth to seventh. Hasaranga
+  has the best wicket impact in the list (0.1008) but concedes more than his
+  own baseline (8.31 against
+  7.94), so his rank reflects the balance of the two components.
+  <strong>Krunal Pandya</strong>, <strong>Kuldeep Yadav</strong> and <strong>Varun Chakravarthy</strong> complete the top 10; Kuldeep
+  has the highest consistency in the bowling top 10 (0.623), while Varun's
+  negative wicket impact (-0.0458) leaves him tenth despite a large sample.</li>
+<li>The list is not simply a death-bowling award. Narine and Bumrah lead on run suppression across
+  phases, while Pathirana and Harshal supply the death-over wicket threat. Brar, Noor and
+  Krunal remain top-10 on large middle-overs samples, but the pressure model discounts tidy
+  spells in games that are already decided.</li>
+<li><strong>What the 85/15 change did.</strong> Moving from the old 50/50 blend to 85/15 raises Bumrah from
+  fifth to second and drops Harshal from first to fourth; Narine inherits first. On the batting
+  side Suryakumar Yadav rises from sixth to second, Klaasen enters at ninth and Pant drops out.
+  This is the intended effect of giving the level test clear precedence over relative
+  improvement.</li>
+</ul>
+<h2 id="6-reliability-and-sensitivity">6. Reliability and sensitivity</h2>
+<p><strong>Consistency check.</strong> The <code>consistency</code> column is the fraction of pressure innings with a
+positive impact. The top-10 batters range from
+0.41 to 0.63;
+the top-10 bowlers range from
+0.46 to 0.62.
+No player reaches the top of a list on one extraordinary innings alone.</p>
+<p><strong>Sensitivity.</strong> Re-running the pipeline with different modelling choices keeps the leading
+names but reshuffles the lower half of each top 10 (Jaccard overlap of the top-10 sets against
+the base run):</p>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>Variant</th>
+<th class="num" style="text-align: right;">Batting overlap</th>
+<th class="num" style="text-align: right;">Bowling overlap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wicket value 2 instead of 5</td>
+<td class="num" style="text-align: right;">1.00</td>
+<td class="num" style="text-align: right;">1.00</td>
+</tr>
+<tr>
+<td>Wicket value 8 instead of 5</td>
+<td class="num" style="text-align: right;">0.67</td>
+<td class="num" style="text-align: right;">0.82</td>
+</tr>
+<tr>
+<td>Pressure = top 20% (not 30%)</td>
+<td class="num" style="text-align: right;">0.54</td>
+<td class="num" style="text-align: right;">0.82</td>
+</tr>
+<tr>
+<td>Pressure = top 40% (not 30%)</td>
+<td class="num" style="text-align: right;">0.82</td>
+<td class="num" style="text-align: right;">0.54</td>
+</tr>
+<tr>
+<td>Absolute weight 0.70 (not 0.85)</td>
+<td class="num" style="text-align: right;">0.82</td>
+<td class="num" style="text-align: right;">0.82</td>
+</tr>
+<tr>
+<td>Absolute weight 1.00 (not 0.85)</td>
+<td class="num" style="text-align: right;">0.82</td>
+<td class="num" style="text-align: right;">1.00</td>
+</tr>
+<tr>
+<td>Soft ramp tau 0.05 (not 0.10)</td>
+<td class="num" style="text-align: right;">1.00</td>
+<td class="num" style="text-align: right;">1.00</td>
+</tr>
+<tr>
+<td>Soft ramp tau 0.20 (not 0.10)</td>
+<td class="num" style="text-align: right;">1.00</td>
+<td class="num" style="text-align: right;">0.82</td>
+</tr>
+</tbody>
+</table>
+<p>The lists are stable in composition at the top and more volatile in the lower half. Halving the
+wicket value reproduces both top-10 sets exactly (the order changes); doubling it changes two
+batting names and one bowling name, because it rewards wicket-taking over economy. Moving the level/improvement
+blend to 0.70 or 1.00 keeps the same leading group and changes at most two names, which is the
+expected behaviour: the blend changes the order and the back half, not the identity of the
+best pressure players. The soft-ramp variants reproduce almost all of the base list. The
+biggest movement comes from moving the pressure threshold to the top 20% or top 40%, which
+changes what counts as pressure at all; even there the overlap is 0.54–0.82 rather than the
+0.25 seen before the soft ramp. The lower half of each list should therefore be read as a
+shortlist rather than a precise ordering.</p>
+<blockquote>
+<p><strong>Robustness.</strong> The leading group is stable across every variant. The biggest movement
+comes from changing what counts as pressure, not from the level/improvement weight.</p>
+</blockquote>
+<h3 id="tier-evidence">Tier evidence</h3>
+<p>Pressure is not spread evenly across the calendar, and the tier weights show up in the data
+before any player is scored. The mean PI rises from bilateral cricket to the IPL playoffs, and
+the share of deliveries above the pressure threshold rises with it.</p>
+<table class="data-table keep compact">
+<thead>
+<tr>
+<th>Tier</th>
+<th class="num" style="text-align: right;">Matches</th>
+<th class="num" style="text-align: right;">Batting balls</th>
+<th class="num" style="text-align: right;">Mean batting PI</th>
+<th class="num" style="text-align: right;">Mean bowling PI</th>
+<th class="num" style="text-align: right;">Pressure share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bilateral</td>
+<td class="num" style="text-align: right;">411</td>
+<td class="num" style="text-align: right;">86,477</td>
+<td class="num" style="text-align: right;">24.0</td>
+<td class="num" style="text-align: right;">26.6</td>
+<td class="num" style="text-align: right;">10%</td>
+</tr>
+<tr>
+<td>Qualifier</td>
+<td class="num" style="text-align: right;">6</td>
+<td class="num" style="text-align: right;">1,334</td>
+<td class="num" style="text-align: right;">27.1</td>
+<td class="num" style="text-align: right;">30.1</td>
+<td class="num" style="text-align: right;">14%</td>
+</tr>
+<tr>
+<td>Emerging league</td>
+<td class="num" style="text-align: right;">24</td>
+<td class="num" style="text-align: right;">5,325</td>
+<td class="num" style="text-align: right;">24.4</td>
+<td class="num" style="text-align: right;">27.1</td>
+<td class="num" style="text-align: right;">13%</td>
+</tr>
+<tr>
+<td>Tri-series</td>
+<td class="num" style="text-align: right;">33</td>
+<td class="num" style="text-align: right;">7,328</td>
+<td class="num" style="text-align: right;">28.4</td>
+<td class="num" style="text-align: right;">32.1</td>
+<td class="num" style="text-align: right;">21%</td>
+</tr>
+<tr>
+<td>Asia Cup league</td>
+<td class="num" style="text-align: right;">30</td>
+<td class="num" style="text-align: right;">6,780</td>
+<td class="num" style="text-align: right;">29.2</td>
+<td class="num" style="text-align: right;">32.9</td>
+<td class="num" style="text-align: right;">24%</td>
+</tr>
+<tr>
+<td>Emerging KO</td>
+<td class="num" style="text-align: right;">6</td>
+<td class="num" style="text-align: right;">1,410</td>
+<td class="num" style="text-align: right;">33.6</td>
+<td class="num" style="text-align: right;">35.9</td>
+<td class="num" style="text-align: right;">37%</td>
+</tr>
+<tr>
+<td>Asia Cup final</td>
+<td class="num" style="text-align: right;">2</td>
+<td class="num" style="text-align: right;">475</td>
+<td class="num" style="text-align: right;">40.8</td>
+<td class="num" style="text-align: right;">45.2</td>
+<td class="num" style="text-align: right;">47%</td>
+</tr>
+<tr>
+<td>IPL league</td>
+<td class="num" style="text-align: right;">351</td>
+<td class="num" style="text-align: right;">79,628</td>
+<td class="num" style="text-align: right;">41.4</td>
+<td class="num" style="text-align: right;">46.9</td>
+<td class="num" style="text-align: right;">51%</td>
+</tr>
+<tr>
+<td>IPL playoffs</td>
+<td class="num" style="text-align: right;">20</td>
+<td class="num" style="text-align: right;">4,493</td>
+<td class="num" style="text-align: right;">57.6</td>
+<td class="num" style="text-align: right;">65.2</td>
+<td class="num" style="text-align: right;">75%</td>
+</tr>
+</tbody>
+</table>
+<figure><img alt="Mean Pressure Index and match count by competition tier" src="figures/fig_tiers.png"/><figcaption>Figure 4. Mean Pressure Index and match count by competition tier</figcaption></figure>
+<p>The table is the ladder made visible. IPL playoffs carry a mean batting PI of
+57.6 and place 75% of deliveries
+above the pressure threshold, against 41.4 and
+51% in IPL league matches and 24.0 and
+10% in bilateral cricket. The Asia Cup final
+(40.8 batting,
+45.2 bowling) lands just below the IPL league,
+exactly where the de-weighted ladder places it: above bilateral cricket, but not promoted to a
+World Cup stand-in. The same ordering holds for bowling, where the playoff mean is
+65.2 against 46.9 in the
+league stage.</p>
+<p>Two consequences follow. The ladder is doing real work: the gaps are wide enough to survive
+the win-probability and opponent adjustments. But because the IPL supplies
+371 of the 883 matches,
+most of the high-pressure sample is IPL cricket. That is a property of the data pack, not a
+thumb on the scale, but the lists are IPL-weighted evidence rather than a balanced global
+sample.</p>
+<hr/>
+<h2 id="7-limitations">7. Limitations</h2>
+<ol>
+<li><strong>No ICC World Cup in the pack.</strong> The requested World Cup rung cannot be measured directly.
+   The Asia Cup is present but is deliberately <strong>not</strong> treated as a World Cup substitute: it is
+   weighted below IPL league level. If an ICC World Cup is added later, the tier mapping is a
+   one-line change in <code>pipeline.py</code>.</li>
+<li><strong>No official ICC ranking file.</strong> Opponent strength uses a pre-match Elo rating computed
+   from the same data. This is dynamic and reproducible, but it is a proxy, not the official
+   ranking table.</li>
+<li><strong>Pressure is a model, not a ground truth.</strong> The 70th percentile defines the core pressure
+   set and the soft ramp smooths the boundary; Section 6 shows the effect of moving both.
+   Different weights produce somewhat different lists, which is why every parameter is
+   documented in <code>outputs/config.json</code>. The score is measured against a level-weighted
+   expectation (85% situation par, 15% the player's own baseline), so it is not a pure level
+   ranking: 15% of the weight still rewards improvement on the player's own history, and a
+   large relative jump can therefore move a player above a more established name. The
+   <code>impact_runs</code> and <code>impact_wickets</code> columns make that trade-off visible for every player,
+   and Section 6 shows how the lists respond when the weight is moved to 0.70 or 1.00.</li>
+<li><strong>Sample sizes remain uneven.</strong> A player with 400 core pressure balls has a wider
+   uncertainty band than one with 900. The 400-ball floor and shrinkage reduce but do not
+   eliminate this; the <code>pressure_balls</code>, <code>effective_balls</code> and <code>consistency</code> columns should be
+   read alongside the rank.</li>
+<li><strong>No player-level matchup quality.</strong> Team strength is captured by pre-match Elo, but T20
+   pressure is also matchup-driven: facing Bumrah and Rashid Khan in a tight chase is not the
+   same as facing part-time bowlers in the same game state. The pack has no player-level Elo or
+   matchup file, so this remains a documented limitation rather than a modelled input.</li>
+<li><strong>The win-probability model is descriptive.</strong> It is fitted on the same data and is used to
+   order situations by leverage, not to claim that a player caused a particular
+   win-probability change. It is a calibration device, not an externally validated forecasting
+   model.</li>
+<li><strong>Selection and role effects.</strong> All-rounders can appear in both lists if they meet the
+   volume thresholds. The lists are pressure-performance lists, not a claim about overall T20
+   greatness.</li>
+<li><strong>Rain and revised matches.</strong> Revised targets and revised innings lengths are taken from
+   <code>matches.csv</code> (the <code>*_revised_overs</code> fields store balls, not overs; this was verified
+   against the delivery counts). Super overs are excluded.</li>
+<li><strong>Pakistani players excluded.</strong> Per the submission instruction, players representing
+   Pakistan and Pakistan A are removed from the rankings. Under the current 400-ball floor no
+   Pakistani player would have entered either top 10 anyway, so the exclusion does not change
+   the submitted lists; it is applied as an explicit guard rather than an implicit one.</li>
+<li><strong>Player labels.</strong> Names are exactly as they appear in the data pack (for example
+    “Namboori Tilak Varma”). The Unstop dropdowns may use shorter labels; map them carefully
+    before submitting.</li>
+</ol>
+<h2 id="8-reproducibility">8. Reproducibility</h2>
+<pre><code>python3 pipeline.py        # builds ratings and top-10 files
+python3 sensitivity.py     # runs the sensitivity variants
+python3 make_report.py     # builds charts and this report
+</code></pre>
+<table class="data-table keep">
+<thead>
+<tr>
+<th>Output</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>outputs/top10_batters.csv</code></td>
+<td>Final top 10 batters</td>
+</tr>
+<tr>
+<td><code>outputs/top10_bowlers.csv</code></td>
+<td>Final top 10 bowlers</td>
+</tr>
+<tr>
+<td><code>outputs/player_pressure_ratings_bat.csv</code></td>
+<td>Full eligible batting rankings</td>
+</tr>
+<tr>
+<td><code>outputs/player_pressure_ratings_bowl.csv</code></td>
+<td>Full eligible bowling rankings</td>
+</tr>
+<tr>
+<td><code>outputs/ball_pressure.csv</code></td>
+<td>Per-delivery PI and outcome (audit trail)</td>
+</tr>
+<tr>
+<td><code>outputs/summary.json</code></td>
+<td>Thresholds, phase par, tier counts and full config</td>
+</tr>
+</tbody>
+</table>
+<p>All parameters live in the <code>CFG</code> dictionary at the top of <code>pipeline.py</code>; <code>outputs/config.json</code>
+records the exact values used for the submitted lists.</p></body>
+</html>
