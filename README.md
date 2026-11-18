@@ -24,32 +24,35 @@ Players' performances across the highest-pressure deliveries (top 30% pressure t
 ### Top 10 Batters Under Pressure
 | Rank | Player | Pressure Score | Pressure Runs | Pressure Balls | Pressure SR | Baseline SR | SR Boost | Consistency |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **1** | **Shreyas Iyer** | **+0.333** | 684 | 436 | 156.9 | 134.7 | +22.2 | 58.7% |
-| **2** | **Suryakumar Yadav** | **+0.330** | 1083 | 647 | 167.4 | 161.4 | +6.0 | 58.8% |
-| **3** | **Shubman Gill** | **+0.329** | 983 | 639 | 153.8 | 143.1 | +10.8 | 61.3% |
-| **4** | **Rajat Patidar** | **+0.318** | 569 | 338 | 168.3 | 151.7 | +16.7 | 56.4% |
-| **5** | **Nicholas Pooran** | **+0.286** | 823 | 525 | 156.8 | 150.3 | +6.4 | 55.6% |
-| **6** | **Heinrich Klaasen** | **+0.279** | 739 | 437 | 169.1 | 161.5 | +7.6 | 55.4% |
-| **7** | **David Miller** | **+0.273** | 707 | 496 | 142.5 | 139.1 | +3.4 | 56.9% |
-| **8** | **Shimron Hetmyer** | **+0.271** | 599 | 373 | 160.6 | 148.0 | +12.6 | 52.6% |
-| **9** | **Tristan Stubbs** | **+0.255** | 495 | 321 | 154.2 | 149.2 | +5.0 | 54.5% |
-| **10** | **Liam Livingstone** | **+0.252** | 425 | 277 | 153.4 | 146.1 | +7.4 | 53.7% |
+| **1** | **Shreyas Iyer** | **+0.333** | 1192 | 696 | 171.3 | 153.1 | +18.1 | 51.1% |
+| **2** | **Suryakumar Yadav** | **+0.330** | 1505 | 881 | 170.8 | 166.3 | +4.5 | 62.7% |
+| **3** | **Shubman Gill** | **+0.329** | 1295 | 756 | 171.3 | 149.4 | +21.9 | 43.5% |
+| **4** | **Rajat Patidar** | **+0.318** | 992 | 557 | 178.1 | 167.9 | +10.2 | 53.3% |
+| **5** | **Nicholas Pooran** | **+0.286** | 1351 | 815 | 165.8 | 157.1 | +8.7 | 53.4% |
+| **6** | **Ruturaj Gaikwad** | **+0.278** | 768 | 464 | 165.5 | 139.0 | +26.5 | 48.6% |
+| **7** | **Jos Buttler** | **+0.276** | 1263 | 781 | 161.7 | 155.4 | +6.3 | 50.0% |
+| **8** | **Lokesh Rahul** | **+0.272** | 1262 | 781 | 161.6 | 141.3 | +20.3 | 48.6% |
+| **9** | **Heinrich Klaasen** | **+0.224** | 1652 | 933 | 177.1 | 166.8 | +10.3 | 58.5% |
+| **10** | **Ishan Kishan** | **+0.221** | 892 | 524 | 170.2 | 146.4 | +23.9 | 40.5% |
 
 ---
 
 ### Top 10 Bowlers Under Pressure
 | Rank | Player | Pressure Score | Pressure Dots | Pressure Wkts | Pressure Balls | Pressure Econ | Baseline Econ | Econ Delta | Consistency |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **1** | **Sunil Narine** | **+0.196** | 225 | 40 | 509 | 6.47 | 6.54 | -0.07 | 67.2% |
-| **2** | **Jasprit Bumrah** | **+0.170** | 194 | 36 | 450 | 6.32 | 6.43 | -0.11 | 63.8% |
-| **3** | **Matheesha Pathirana** | **+0.165** | 157 | 45 | 387 | 7.64 | 7.82 | -0.18 | 58.7% |
-| **4** | **Harshal Patel** | **+0.163** | 179 | 53 | 473 | 8.84 | 9.08 | -0.24 | 56.4% |
-| **5** | **Harpreet Brar** | **+0.136** | 129 | 24 | 311 | 7.14 | 7.29 | -0.15 | 60.0% |
-| **6** | **Rashid Khan** | **+0.134** | 224 | 42 | 539 | 7.43 | 7.39 | +0.04 | 57.7% |
-| **7** | **Arshdeep Singh** | **+0.132** | 220 | 55 | 560 | 8.65 | 8.69 | -0.04 | 54.5% |
-| **8** | **Varun Chakravarthy** | **+0.129** | 187 | 37 | 451 | 7.50 | 7.48 | +0.02 | 57.1% |
-| **9** | **Trent Boult** | **+0.128** | 184 | 32 | 412 | 7.74 | 7.91 | -0.17 | 56.5% |
-| **10** | **Axar Patel** | **+0.125** | 178 | 32 | 428 | 7.15 | 7.18 | -0.03 | 58.3% |
+| **1** | **Sunil Narine** | **+0.196** | 369 | 48 | 1006 | 6.71 | 6.87 | -0.16 | 62.1% |
+| **2** | **Jasprit Bumrah** | **+0.170** | 238 | 36 | 677 | 7.55 | 7.27 | +0.28 | 50.9% |
+| **3** | **Matheesha Pathirana** | **+0.165** | 203 | 41 | 573 | 7.93 | 8.85 | -0.92 | 53.8% |
+| **4** | **Harshal Patel** | **+0.163** | 306 | 59 | 896 | 8.10 | 9.32 | -1.22 | 52.5% |
+| **5** | **Harpreet Brar** | **+0.136** | 133 | 22 | 424 | 7.87 | 8.25 | -0.38 | 48.4% |
+| **6** | **Noor Ahmad** | **+0.128** | 266 | 44 | 784 | 7.93 | 8.01 | -0.08 | 54.3% |
+| **7** | **Wanindu Hasaranga** | **+0.127** | 234 | 43 | 688 | 8.31 | 7.94 | +0.37 | 47.5% |
+| **8** | **Krunal Pandya** | **+0.090** | 267 | 42 | 879 | 7.49 | 7.81 | -0.32 | 46.3% |
+| **9** | **Kuldeep Yadav** | **+0.069** | 361 | 64 | 1135 | 7.89 | 8.02 | -0.13 | 62.3% |
+| **10** | **Varun Chakravarthy** | **+0.041** | 362 | 48 | 972 | 7.83 | 8.01 | -0.18 | 55.1% |
+
+*Pressure dots count legal pressure balls conceding no runs. Pressure score is the final ranking
+score from `outputs/top10_bowlers.csv`; all columns are reproduced from the pipeline outputs.*
 
 ---
 
@@ -58,7 +61,7 @@ Players' performances across the highest-pressure deliveries (top 30% pressure t
 ```
 Match Tier Weight (0.6 - 1.4)
            ×
-Opponent Elo Multiplier (0.85 - 1.15)
+Opponent Elo Multiplier (0.80 - 1.20)
            ×
 Situational Tension (Win Probability Closeness + Required Rate / Over Leverage)
            =
@@ -67,10 +70,12 @@ Situational Tension (Win Probability Closeness + Required Rate / Over Leverage)
 
 1. **Stakes Tiering:**
    - Bilateral / Qualifiers: `0.60`
+   - Emerging leagues: `0.60`
    - Tri-series: `0.70`
-   - Emerging leagues / Continental group games: `0.60 – 0.70`
+   - Asia Cup league (group / Super 4): `0.70`
+   - Emerging knockouts: `0.75`
+   - Asia Cup final: `0.85`
    - IPL League: `1.00`
-   - Continental Finals: `0.85`
    - IPL Playoffs / Final: `1.40`
 2. **Dynamic Team Elo:**
    - Independent rating pools for IPL franchises and international teams.
@@ -116,9 +121,9 @@ Situational Tension (Win Probability Closeness + Required Rate / Over Leverage)
 - Python 3.8+
 - Recommended packages:
   ```bash
-  pip install numpy matplotlib markdown beautifulsoup4 weasyprint
+  pip install numpy matplotlib markdown beautifulsoup4
   ```
-  *(Note: `pipeline.py` only requires `numpy` alongside standard library modules).*
+  *(Note: `pipeline.py` only requires `numpy` alongside standard library modules. PDF rendering uses headless Google Chrome/Chromium, with LibreOffice as a fallback.)*
 
 ### Execution
 
